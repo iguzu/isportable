@@ -1,2 +1,2 @@
 heroku ps:scale web=1 --app isportable
-
+export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib:$DYLD_FALLBACK_LIBRARY_PATH
