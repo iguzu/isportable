@@ -1,2 +1,4 @@
 heroku ps:scale web=1 --app isportable
 export DYLD_FALLBACK_LIBRARY_PATH=/opt/local/lib:$DYLD_FALLBACK_LIBRARY_PATH
+heroku run python --app isportable
+http://blog.y3xz.com/blog/2012/08/16/flask-and-postgresql-on-heroku

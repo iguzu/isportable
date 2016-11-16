@@ -9,5 +9,11 @@
   <p>...</p>
   <p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a></p>
 </div>
+<h1>User list</h1>
+<li>
+    {% for user in users %}
+        <ul>Username: {{ user.name }}, email: {{ user.email }}</ul>
+    {%  endfor %}
+</li>
 </body>
 </html>
