@@ -1,4 +1,8 @@
-# Deployment Instructions
+# L3 portablity app
+
+This webapp allows to lookup phone numbers to see if they are portable on the Level3 voice network
+
+## Deployment Instructions
 
 1. Create an Heroku account
 2. Create new app in Heroku (hereafter <appname>
@@ -10,7 +14,7 @@
 8. Import data
 
 
-##Initialize database schame (run once when deploying the app)
+###Initialize database schame (run once when deploying the app)
 
 heroku run python --app <appname>
 '''
@@ -19,7 +23,7 @@ from importer import clear_data, count, import_data, create_all
 create_all(app,db)
 '''
 
-##Clear all Data (run before importing dat):
+###Clear all Data (run before importing dat):
 
 heroku run python --app <appname>
 '''
@@ -28,7 +32,7 @@ from importer import clear_data, count, import_data, create_all
 clear_data(app,db)
 '''
 
-##Import footprint data:
+###Import footprint data:
 
 heroku run python --app <appname>
 '''
@@ -37,7 +41,7 @@ from importer import clear_data, count, import_data, create_all
 import_data(app,db)
 '''
 
-##Check the count of footprint data:
+###Check the count of footprint data:
 
 heroku run python --app <appname>
 '''
@@ -47,7 +51,7 @@ count(app)
 '''
 
 
-#Update Footprint Data:
+##Update Footprint Data:
 
 1. export L3 excel file to 'footprint.csv'
 2. check-in in github the new version ofr 'footprint.csv'
@@ -59,9 +63,9 @@ See the following for more information on Heroku, Flask, SQLAlchemy and postgres
 http://blog.y3xz.com/blog/2012/08/16/flask-and-postgresql-on-heroku
 
 
-#Other notes:
+##Other notes:
 
-###If the dyno is not created automatically, run the following:
+### If the dyno is not created automatically, run the following:
 '''
 heroku ps:scale web=1 --app isportable
 '''
