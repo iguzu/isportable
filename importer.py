@@ -3,7 +3,7 @@ import csv
 import os
 
 from models import RateCenter
-APP_ROOT = os.path.dirname(os.path.abspath(__file__))
+
 
 
 def clear_data(app, db):
@@ -17,10 +17,11 @@ def import_data(app, db):
     with app.app_context():
         if RateCenter.query.count():
             return "Database not empty"
+        APP_ROOT = os.path.dirname(os.path.abspath(__file__))
         csvfile = open(os.path.join(APP_ROOT,'footprint.csv'))
         reader = csv.reader(csvfile, delimiter=',',quotechar='"')
-        count = 0
         results = list(filter(lambda x: x[4].strip() == 'Y',reader))
+        count = 0
         for row in results:
             state, rate_center, lata, name, coverage = row
             state = state.strip()
@@ -50,6 +51,6 @@ def create_all(app,db):
     return 'Done'
 
 
-def count(app,db):
+def count(app):
     with app.app_context():
         return str(RateCenter.query.count())
