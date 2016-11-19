@@ -14,7 +14,7 @@ This webapp allows to lookup phone numbers to see if they are portable on the Le
 8. Import data (see below)
 
 
-###Initialize database schame (run once when deploying the app)
+###Initialize database schema (run once when deploying the app)
 ```
 heroku run python --app <appname>
 
@@ -23,7 +23,7 @@ from importer import clear_data, count, import_data, create_all
 create_all(app,db)
 ```
 
-###Clear all Data (run before importing dat):
+###Clear Data (run before importing dat):
 ```
 heroku run python --app <appname>
 
@@ -41,7 +41,7 @@ from importer import clear_data, count, import_data, create_all
 import_data(app,db)
 ```
 
-###Check the count of footprint data:
+###Check the count of footprint data (troubleshooting):
 ```
 heroku run python --app <appname>
 
@@ -54,7 +54,7 @@ count(app)
 ##Update Footprint Data:
 
 1. export L3 excel file to 'footprint.csv'
-2. check-in in github the new version ofr 'footprint.csv'
+2. check-in in github the new version of 'footprint.csv'
 3. Clear data (see above)
 4. import data (see above)
 
@@ -71,18 +71,18 @@ heroku ps:scale web=1 --app <appname>
 ```
 
 ### MacOS mising libraries
-On MacOS, some libraries may not be found. create links to them in /opt/local/lib and add the directory to the dynamic library loader. Use the following environment variable:
+On MacOS, some libraries may not be found. Add the directory where to find them to the dynamic library loader. Use the following environment variable (in your run configuration):
 ```
 DYLD_FALLBACK_LIBRARY_PATH=/Library/PostgreSQL/9.6/lib;/opt/local/lib;$DYLD_FALLBACK_LIBRARY_PATH
 ```
 
-### running local application with remote DB. Get the database_uri and store it in an environment variable:
+### running local application with remote DB. Get the database_uri and store it in an environment variable (in your run configuration):
 ```
 heroku run python --app <appname>
 
 import os
 os.environ['DATABASE_URL']
-```
 
 save the value in a local environment variable:
 DATABASE_URL=<valuereturned>
+```
