@@ -1,0 +1,6 @@
+<table class="table table-striped">
+    <tr><th>Phone Number</th><th>Result</th></tr>
+    {% for item in results %}
+    <tr><td>{{ item.number }}</td><td>{{ item.result }}</td></tr>
+    {% endfor %}
+</table>

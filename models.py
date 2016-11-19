@@ -1,4 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
+from flask import Flask
+import os
 
 db = SQLAlchemy()
 
@@ -9,4 +11,5 @@ class RateCenter(db.Model):
     lata = db.Column(db.String(5))
     name = db.Column(db.String(64))
     coverage = db.Column(db.Boolean())
+
 
