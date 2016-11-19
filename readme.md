@@ -53,7 +53,7 @@ count(app)
 
 ##Update Footprint Data:
 
-1. export L3 excel file to 'footprint.csv'
+1. export L3 excel file to 'footprint.csv' (obtained from L3)
 2. check-in in github the new version of 'footprint.csv'
 3. Clear data (see above)
 4. import data (see above)
