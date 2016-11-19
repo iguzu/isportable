@@ -14,23 +14,23 @@ db.init_app(app)
 def hello_world():
     return render_template('home.html')
 
-@app.route('/clear')
-def clear_handler():
-    return clear_data(db)
+#@app.route('/clear')
+#def clear_handler():
+#    return clear_data(db)
 
-@app.route('/count')
-def count_handler():
-    return str(RateCenter.query.count())
+#@app.route('/count')
+#def count_handler():
+#    return str(RateCenter.query.count())
 
-@app.route('/import')
-def import_handler():
-    return import_data(db)
+#@app.route('/import')
+#def import_handler():
+#    return import_data(db)
 
 
-@app.route('/create_all')
-def create_all_handler():
-    create_all(db)
-    return 'Done'
+#@app.route('/create_all')
+#def create_all_handler():
+#    create_all(db)
+#    return 'Done'
 
 @app.route('/lookup',methods=['POST'])
 def lookup_handler():
