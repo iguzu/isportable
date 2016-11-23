@@ -18,18 +18,12 @@ def import_data(app, db):
             return "Database not empty"
         reader = csv.reader(open(os.path.join(APP_ROOT,'footprint.csv')), delimiter=',',quotechar='"')
         results = list(filter(lambda x: x[4].strip() == 'Y',reader))
-        count = 0
         for row in results:
             row = [ item.strip() for item in row ]
             rc = RateCenter()
             rc.state, rc.rate_center, rc.lata, rc.name, rc.coverage = row
             rc.coverage = True if rc.coverage == 'Y' else False
             db.session.add(rc)
-            count += 1
-            if not count % 100:
-                print('committing... %d RateCenters' % count)
-                db.session.commit()
-                print('commit... Done')
         db.session.commit()
     return 'Done'
 
