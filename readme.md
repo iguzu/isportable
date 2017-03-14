@@ -8,7 +8,7 @@ This webapp allows to lookup phone numbers to see if they are portable on the Le
 2. Create new app in Heroku (hereafter <appname>
 3. link the app to the github repo
 4. deploy the app (Deploy Branch)
-5. Download the Heroku CLI
+5. Download and install the Heroku CLI (https://devcenter.heroku.com/articles/heroku-cli)
 6. run: heroku heroku addons:add heroku-postgresql --app <appname>
 7. Initialize database schema (see below)
 8. Import data (see below)
