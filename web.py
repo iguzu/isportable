@@ -37,7 +37,6 @@ def lookup_handler():
                 center =row.find('td',{'data-label': "Rate centre"})
                 region = row.find('td', {'data-label': "Region"})
                 lookup.append({'ratecenter':center.text.strip().upper(), 'region':region.text.strip().upper()})
-            print(repr(lookup))
             for item in lookup:
                 found += RateCenter.query.filter(RateCenter.rate_center == item['ratecenter']).filter(RateCenter.state == item['region']).count()
             results.append({'number': tn, 'result': 'Portable' if found else 'Not portable'})
