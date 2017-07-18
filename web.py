@@ -28,12 +28,17 @@ def lookup_handler():
             results.append({'number': tn, 'result': 'Invalid Number'})
         else:
             found = 0
+            lookup = []
             content = urllib.request.urlopen("http://localcallingguide.com/lca_prefix.php?npa=%s&nxx=%s" % (tn[0:3],tn[3:6])).read()
             soup = BeautifulSoup(content, 'html.parser')
-            tds = soup.find_all('td',{'data-label':"Rate centre"})
-            lookup = [item.text.strip().upper() for item in tds]
+            table = soup.find('tbody')
+            rows = table.find_all('tr')
+            for row in rows:
+                center =row.find('td',{'data-label': "Rate centre"})
+                region = row.find('td', {'data-label': "Region"})
+                lookup.append({'ratecenter':center.text.strip().upper(), 'region':region.text.strip().upper()})
             for item in lookup:
-                found += RateCenter.query.filter(RateCenter.rate_center == item).count()
+                found += RateCenter.query.filter(RateCenter.rate_center == item['ratecenter']).filter(RateCenter.state == item['region']).count()
             results.append({'number': tn, 'result': 'Portable' if found else 'Not portable'})
     return render_template('lookup_result.html',results=results)
 
