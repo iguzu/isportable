@@ -1,7 +1,7 @@
 import os
 from flask import Flask, render_template, request, redirect, url_for
 from models import db, RateCenter
-import urllib.request
+from urllib.request import Request, urlopen
 from bs4 import BeautifulSoup
 import re
 
@@ -29,7 +29,10 @@ def lookup_handler():
         else:
             found = 0
             lookup = []
-            content = urllib.request.urlopen("http://localcallingguide.com/lca_prefix.php?npa=%s&nxx=%s" % (tn[0:3],tn[3:6])).read()
+            q = Request("https://localcallingguide.com/lca_prefix.php?npa=%s&nxx=%s" % (tn[0:3],tn[3:6]))
+            q.add_header('User-Agent','curl/7.54.0')
+            q.add_header('Accept', '*/*')
+            content = urlopen(q).read()
             soup = BeautifulSoup(content, 'html.parser')
             table = soup.find('tbody')
             rows = table.find_all('tr')
